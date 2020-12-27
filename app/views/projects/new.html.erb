@@ -1,0 +1,119 @@
+
+<div class="row">
+      <div class="col-2">
+        <%=render 'country.html.erb'%>
+      </div>
+      <div class="col-8">
+            <h4 id="Info">INFO</h4>
+            <table  class="table table-striped">
+                  <tbody>
+                        <%= form_with do |form| %>
+                    <tr>
+                      <td><%=form.label :receive_date,'收件時間'%></td>
+                      <td><%=form.date_field :receive_date%></td>
+                    </tr>
+                    <tr>
+                      <td><%=form.label :project_number,'案號'%></td>
+                      <td><%=form.text_field :receive_date%></td>
+                    </tr>
+                    <tr>
+                      <td><%=form.label :customer,'客戶'%></td>
+                      <td><%=form.text_field :receive_date%></td>
+                    </tr>
+                    <tr>
+                      <td><%=form.label :product_number,'產品型號'%></td>
+                      <td><%=form.text_field :receive_date%></td>
+                    </tr>
+                    <tr>
+                      <td><%=form.label :product_name,'產品名稱'%></td>
+                      <td><%=form.text_field :receive_date%></td>
+                    </tr>
+                    <tr>
+                        <td><%=form.label :salesman,'業務'%></td>
+                        <td><%=form.text_field :receive_date%></td>
+                    </tr>
+                    <tr>
+                        <td><%=form.label :PM,'負責PM'%></td>
+                        <td><%=form.text_field :receive_date%></td>
+                    </tr>
+                    <%end%>
+                  </tbody>
+                </table>
+                <hr>
+               <h4 id="country_fcc">FCC</h4>
+                <table  class="table table-striped">
+                  <tbody>
+                  <%=form_for @project do |project|%>
+                    <tr>
+                      <td><%=project.label :receive_date,'收件時間'%></td>
+                      <td><%=project.date_field :receive_date%></td>
+                    </tr>
+                    <tr>
+                      <td><%=project.label :project_number,'案號'%></td>
+                      <td><%=project.text_field :receive_date%></td>
+                    </tr>
+                    <tr>
+                      <td><%=project.label :customer,'客戶'%></td>
+                      <td><%=project.text_field :receive_date%></td>
+                    </tr>
+                    <tr>
+                      <td><%=project.label :product_number,'產品型號'%></td>
+                      <td><%=project.text_field :receive_date%></td>
+                    </tr>
+                    <tr>
+                      <td><%=project.label :product_name,'產品名稱'%></td>
+                      <td><%=project.text_field :receive_date%></td>
+                    </tr>
+                    <tr>
+                        <td><%=project.label :salesman,'業務'%></td>
+                        <td><%=project.text_field :receive_date%></td>
+                    </tr>
+                    <tr>
+                        <td><%=project.label :PM,'負責PM'%></td>
+                        <td><%=project.text_field :receive_date%></td>
+                    </tr>
+                    <%end%>
+                  </tbody>
+                </table>
+
+                <hr>
+                <h4 id="country_ce">CE</h4>
+                <table  class="table table-striped">
+                  <tbody>
+                  <%=form_for @project do |project|%>
+                    <tr>
+                      <td><%=project.label :receive_date,'收件時間'%></td>
+                      <td><%=project.date_field :receive_date%></td>
+                    </tr>
+                    <tr>
+                      <td><%=project.label :project_number,'案號'%></td>
+                      <td><%=project.text_field :receive_date%></td>
+                    </tr>
+                    <tr>
+                      <td><%=project.label :customer,'客戶'%></td>
+                      <td><%=project.text_field :receive_date%></td>
+                    </tr>
+                    <tr>
+                      <td><%=project.label :product_number,'產品型號'%></td>
+                      <td><%=project.text_field :receive_date%></td>
+                    </tr>
+                    <tr>
+                      <td><%=project.label :product_name,'產品名稱'%></td>
+                      <td><%=project.text_field :receive_date%></td>
+                    </tr>
+                    <tr>
+                        <td><%=project.label :salesman,'業務'%></td>
+                        <td><%=project.text_field :receive_date%></td>
+                    </tr>
+                    <tr>
+                        <td><%=project.label :PM,'負責PM'%></td>
+                        <td><%=project.text_field :receive_date%></td>
+                    </tr>
+                    <%end%>
+                  </tbody>
+                </table>
+               
+      </div>
+
+
+</div>
