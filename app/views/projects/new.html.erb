@@ -4,7 +4,7 @@
         <%=render 'country.html.erb'%>
       </div>
       <div class="col-8">
-            <h4 id="Info">INFO</h4>
+            <h4 id="Info">案件資訊</h4>
             <table  class="table table-striped">
                   <tbody>
                         <%= form_with do |form| %>
@@ -13,7 +13,7 @@
                       <td><%=form.date_field :receive_date%></td>
                     </tr>
                     <tr>
-                      <td><%=form.label :project_number,'案號'%></td>
+                      <td><%=form.label :form_number,'案號'%></td>
                       <td><%=form.text_field :receive_date%></td>
                     </tr>
                     <tr>
@@ -36,84 +36,190 @@
                         <td><%=form.label :PM,'負責PM'%></td>
                         <td><%=form.text_field :receive_date%></td>
                     </tr>
-                    <%end%>
+            
                   </tbody>
                 </table>
                 <hr>
                <h4 id="country_fcc">FCC</h4>
                 <table  class="table table-striped">
                   <tbody>
-                  <%=form_for @project do |project|%>
+                 
                     <tr>
-                      <td><%=project.label :receive_date,'收件時間'%></td>
-                      <td><%=project.date_field :receive_date%></td>
+                        <td><h4>測試狀態</h4></td>
+                        <td><h4>測試項目</h4></td>
+                        <td><h4>完成日期</h4></td>
+                   </tr>
+                    <tr>
+                      <td><%= form.check_box :Fcc_966_status%><span>測試</span></td>
+                      <td><%=form.label :Fcc_966,'966'%></td>
+                      <td><%=form.date_field :Fcc_966_date%></td>
                     </tr>
                     <tr>
-                      <td><%=project.label :project_number,'案號'%></td>
-                      <td><%=project.text_field :receive_date%></td>
+                        <td><%= form.check_box :Fcc_TH_status%><span>測試</span></td>
+                        <td><%=form.label :Fcc_TH,'TH'%></td>
+                        <td><%=form.date_field :Fcc_TH_date%></td>
                     </tr>
                     <tr>
-                      <td><%=project.label :customer,'客戶'%></td>
-                      <td><%=project.text_field :receive_date%></td>
+                        <td><%= form.check_box :Fcc_FD_status%><span>測試</span></td>
+                        <td><%=form.label :Fcc_FD,'FD'%></td>
+                        <td><%=form.date_field :Fcc_FD_date%></td>
                     </tr>
                     <tr>
-                      <td><%=project.label :product_number,'產品型號'%></td>
-                      <td><%=project.text_field :receive_date%></td>
+                        <td><%= form.check_box :Fcc_DFS_status%><span>測試</span></td>
+                        <td><%=form.label :Fcc_DFS,'DFS'%></td>
+                        <td><%=form.date_field :Fcc_DFS_date%></td>
                     </tr>
                     <tr>
-                      <td><%=project.label :product_name,'產品名稱'%></td>
-                      <td><%=project.text_field :receive_date%></td>
+                        <td><%= form.check_box :Fcc_TPC_status%><span>測試</span></td>
+                        <td><%=form.label :Fcc_TPC,'TPC'%></td>
+                        <td><%=form.date_field :Fcc_TPC_date%></td>
                     </tr>
-                    <tr>
-                        <td><%=project.label :salesman,'業務'%></td>
-                        <td><%=project.text_field :receive_date%></td>
-                    </tr>
-                    <tr>
-                        <td><%=project.label :PM,'負責PM'%></td>
-                        <td><%=project.text_field :receive_date%></td>
-                    </tr>
-                    <%end%>
                   </tbody>
                 </table>
-
+                <!-- CE -->
                 <hr>
                 <h4 id="country_ce">CE</h4>
                 <table  class="table table-striped">
                   <tbody>
-                  <%=form_for @project do |project|%>
                     <tr>
-                      <td><%=project.label :receive_date,'收件時間'%></td>
-                      <td><%=project.date_field :receive_date%></td>
+                        <td><h4>測試狀態</h4></td>
+                        <td><h4>測試項目</h4></td>
+                        <td><h4>完成日期</h4></td>
+                   </tr>
+                    <tr>
+                      <td><%= form.check_box :ce_Fully_status%><span>測試</span></td>
+                      <td><%=form.label :ce_966,'966'%></td>
+                      <td><%=form.date_field :ce_966_date%></td>
                     </tr>
                     <tr>
-                      <td><%=project.label :project_number,'案號'%></td>
-                      <td><%=project.text_field :receive_date%></td>
+                        <td><%= form.check_box :ce_TH_status%><span>測試</span></td>
+                        <td><%=form.label :ce_TH,'TH'%></td>
+                        <td><%=form.date_field :ce_TH_date%></td>
                     </tr>
                     <tr>
-                      <td><%=project.label :customer,'客戶'%></td>
-                      <td><%=project.text_field :receive_date%></td>
+                        <td><%= form.check_box :ce_FD_status%><span>測試</span></td>
+                        <td><%=form.label :ce_Adaptivity,'Adaptivity'%></td>
+                        <td><%=form.date_field :ce_FD_date%></td>
                     </tr>
                     <tr>
-                      <td><%=project.label :product_number,'產品型號'%></td>
-                      <td><%=project.text_field :receive_date%></td>
+                        <td><%= form.check_box :ce_DFS_status%><span>測試</span></td>
+                        <td><%=form.label :ce_DFS,'DFS'%></td>
+                        <td><%=form.date_field :ce_DFS_date%></td>
                     </tr>
                     <tr>
-                      <td><%=project.label :product_name,'產品名稱'%></td>
-                      <td><%=project.text_field :receive_date%></td>
+                        <td><%= form.check_box :ce_TPC_status%><span>測試</span></td>
+                        <td><%=form.label :ce_TPC,'TPC'%></td>
+                        <td><%=form.date_field :ce_TPC_date%></td>
+                    </tr>
+                  </tbody>
+                </table>      
+                <!-- EMC -->
+                <hr>
+                <h4 id="country_emc">EMC</h4>
+                <table  class="table table-striped">
+                  <tbody>
+                
+                    <tr>
+                        <td><h4>測試狀態</h4></td>
+                        <td><h4>測試項目</h4></td>
+                        <td><h4>完成日期</h4></td>
+                   </tr>
+                    <tr>
+                      <td><%= form.check_box :emc_EMI_status%><span>測試</span></td>
+                      <td><%=form.label :emc_EMI,'EMI'%></td>
+                      <td><%=form.date_field :emc_EMI_date%></td>
                     </tr>
                     <tr>
-                        <td><%=project.label :salesman,'業務'%></td>
-                        <td><%=project.text_field :receive_date%></td>
+                        <td><%= form.check_box :emc_EMS_status%><span>測試</span></td>
+                        <td><%=form.label :emc_EMS,'EMS'%></td>
+                        <td><%=form.date_field :emc_EMS_date%></td>
                     </tr>
                     <tr>
-                        <td><%=project.label :PM,'負責PM'%></td>
-                        <td><%=project.text_field :receive_date%></td>
+                        <td><%= form.check_box :emc_EP_status%><span>測試</span></td>
+                        <td><%=form.label :emc_EP,'EP'%></td>
+                        <td><%=form.date_field :emc_FD_date%></td>
                     </tr>
-                    <%end%>
+                    <tr>
+                        <td><%= form.check_box :emc_PLC_status%><span>測試</span></td>
+                        <td><%=form.label :emc_PLC,'PLC'%></td>
+                        <td><%=form.date_field :emc_DFS_date%></td>
+                    </tr>
+                    <tr>
+                        <td><%= form.check_box :emc_Special_status%><span>測試</span></td>
+                        <td><%=form.label :emc_Special,'Special'%></td>
+                        <td><%=form.date_field :emc_Special_date%></td>
+                    </tr>
                   </tbody>
                 </table>
+          
+                <!-- ncc -->
+                <hr>
+                <h4 id="country_ncc">NCC</h4>
+                <table  class="table table-striped">
+                  <tbody>
+                 
+                    <tr>
+                        <td><h4>測試狀態</h4></td>
+                        <td><h4>測試項目</h4></td>
+                        <td><h4>完成日期</h4></td>
+                   </tr>
+                    <tr>
+                      <td><%= form.check_box :ncc_966_status%><span>測試</span></td>
+                      <td><%=form.label :ncc_966,'966'%></td>
+                      <td><%=form.date_field :ncc_966_date%></td>
+                    </tr>
+                    <tr>
+                        <td><%= form.check_box :ncc_th_status%><span>測試</span></td>
+                        <td><%=form.label :ncc_th,'TH'%></td>
+                        <td><%=form.date_field :ncc_th_date%></td>
+                    </tr>
+                  </tbody>
+                </table>
+                  <!-- C-TICK -->
+              <hr>
+              <h4 id="country_ctick">C-TICK</h4>
+              <table  class="table table-striped">
+                <tbody>
                
+                  <tr>
+                      <td><h4>測試狀態</h4></td>
+                      <td><h4>測試項目</h4></td>
+                      <td><h4>完成日期</h4></td>
+                 </tr>
+                  <tr>
+                    <td><%= form.check_box :ctick_fully_status%><span>測試</span></td>
+                    <td><%=form.label :ctick_fully,'fully'%></td>
+                    <td><%=form.date_field :ctick_fully_date%></td>
+                  </tr>
+                  <tr>
+                      <td><%= form.check_box :ctick_th_status%><span>測試</span></td>
+                      <td><%=form.label :ctick_th,'TH'%></td>
+                      <td><%=form.date_field :ctick_th_date%></td>
+                  </tr>
+                </tbody>
+              </table>                
+                           <!-- JR -->
+             <hr>
+             <h4 id="country_jr">JR</h4>
+             <table  class="table table-striped">
+               <tbody>
+            
+                 <tr>
+                     <td><h4>測試狀態</h4></td>
+                     <td><h4>測試項目</h4></td>
+                     <td><h4>完成日期</h4></td>
+                </tr>
+                 <tr>
+                   <td><%= form.check_box :jr_th_status%><span>測試</span></td>
+                   <td><%=form.label :jr_th,'TH'%></td>
+                   <td><%=form.date_field :jr_th_date%></td>
+                 </tr>
+                 <tr>
+                     <td><%= form.check_box :jr_dfs_status%><span>測試</span></td>
+                     <td><%=form.label :jr_dfs,'DFS'%></td>
+                     <td><%=form.date_field :jr_dfs_date%></td>
+                 </tr>
+               </tbody>
+             </table>
+                <%end%>
       </div>
-
-
-</div>

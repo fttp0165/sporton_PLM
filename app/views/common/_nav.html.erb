@@ -30,8 +30,9 @@
               <%=link_to "新增案件" ,new_project_path,class:"dropdown-item"%>
               <div class="dropdown-divider"></div>
               <%=link_to "登出" ,destroy_user_session_path,class:"dropdown-item"%>
-              <%end%>new_user_registration
+              <%else%>
               <%=link_to "登入" ,new_user_session_path,class:"dropdown-item"%>
+              <%end%>
             </div>
           </h2>
           </li>
