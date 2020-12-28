@@ -50,6 +50,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 4.0', '>= 4.0.2'
 end
 
@@ -62,4 +63,3 @@ gem 'devise', '~> 4.2'
 gem 'thor'
 gem 'foreman'
 gem 'faker', '~> 2.15', '>= 2.15.1'
-gem 'factory_bot', '~> 6.1'
