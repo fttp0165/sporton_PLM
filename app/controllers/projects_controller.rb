@@ -21,9 +21,22 @@ class ProjectsController < ApplicationController
 
   def edit
     @project=Project.find(params[:id])
-    
   end
 
+  def update
+    @project=Project.find(params[:id])
+    if @project.update(project_permit)
+      flash[:notice]="更新成功"
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
+
+  def show
+    @project=Project.find(params[:id])
+  end
 
   private
   def project_permit

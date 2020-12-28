@@ -12,12 +12,12 @@
   <body>
     <div class="container-full">
     <%=render  "./common/nav.html.erb" %>
-      <%if flash[:notice]%>
-        <div class="alert alert-danger" role="alert">
+      <%if flash[:notice]%> 
+        <div class="alert alert-danger modal-body" role="alert">
           <%=flash[:notice]%>
-          <button type="button" class="close" aria-label="Close">
+          <!-- <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"></button>
             <span aria-hidden="true">&times;</span>
-          </button>
+          </button> -->
         </div>
       <%end%>
     <%= yield %>

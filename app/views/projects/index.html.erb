@@ -21,7 +21,7 @@
             <!-- 收件日 -->
             <td><%=project.receive_date%></td>
             <!-- 案號 -->
-            <td><%=project.project_number%></td>
+            <td><%= link_to  "#{project.project_number}",project_path(project) %></td> 
              <!-- 客戶 -->
             <td><%=project.customer%></td> 
              <!-- 產品型號 -->
@@ -32,19 +32,10 @@
             <td><%=project.PM%></td> 
               <!-- edit -->
             <td><%= link_to  '編輯',edit_project_path(project) %></td> 
-            
-
-            
           </tr>
           <%end%>
-       
-    
         </tbody>
       </table>
     </div>
-
-
-
   </div>
-
 </div>
