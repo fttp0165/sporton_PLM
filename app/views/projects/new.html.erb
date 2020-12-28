@@ -175,6 +175,30 @@
                     </tr>
                   </tbody>
                 </table>
+            <!-- ic -->
+                        <hr>
+                 <h4 id="country_ic">IC</h4>
+                 <table  class="table table-striped">
+                   <tbody>
+           
+                     <tr>
+                         <td><h4>測試狀態</h4></td>
+                         <td><h4>測試項目</h4></td>
+                         <td><h4>完成日期</h4></td>
+                    </tr>
+                     <tr>
+                       <td><%= form.check_box :ic_th_status%><span>測試</span></td>
+                       <td><%=form.label :ic_966,'966'%></td>
+                       <td><%=form.date_field :ic_966_date%></td>
+                     </tr>
+                     <tr>
+                         <td><%= form.check_box :ic_dfs_status%><span>測試</span></td>
+                         <td><%=form.label :ic_th,'TH'%></td>
+                         <td><%=form.date_field :ic_th_date%></td>
+                     </tr>
+                   </tbody>
+                 </table>
+
                   <!-- C-TICK -->
               <hr>
               <h4 id="country_ctick">C-TICK</h4>
@@ -221,6 +245,41 @@
                  </tr>
                </tbody>
              </table>
-             <td><%=form.submit class:"btn btn-success"%></td>
-                <%end%>
+            
+             <!-- worldwide -->
+             <hr>
+             <h4 id="country_worldwide">WorldWide</h4>
+             <table  class="table table-striped">
+               <tbody>
+            
+                 <tr>
+                     <td><h4>測試狀態</h4></td>
+                     <td><h4>測試項目</h4></td>
+                     <td><h4>完成日期</h4></td>
+                </tr>
+                <tr>
+                 <td><%= form.check_box :worldwide_966_status%><span>測試</span></td>
+                 <td><%=form.label :worldwide_966,'966'%></td>
+                 <td><%=form.date_field :worldwide_966_date%></td>
+               </tr>
+                 <tr>
+                   <td><%= form.check_box :worldwide_th_status%><span>測試</span></td>
+                   <td><%=form.label :worldwide_th,'TH'%></td>
+                   <td><%=form.date_field :worldwide_th_date%></td>
+                 </tr>
+                 <tr>
+                     <td><%= form.check_box :worldwide_dfs_status%><span>測試</span></td>
+                     <td><%=form.label :worldwide_dfs,'DFS'%></td>
+                     <td><%=form.date_field :worldwide_dfs_date%></td>
+                 </tr>
+               </tbody>
+             </table>
+             <div class="row">
+             <div class="col-10"></div>
+             <%=form.submit class:"btn btn-success col-1"%>
+            </div>
+        <%end%>
       </div>
+      
+     
+</div>
