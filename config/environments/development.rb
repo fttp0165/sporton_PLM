@@ -61,7 +61,7 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   #factory
-  config.factory_bot.definition_file_paths = ["custom/factories"]
+  #config.factory_bot.definition_file_paths = ["custom/factories"]
   #add host
   config.hosts << "plm.beginner0.com"
 end
