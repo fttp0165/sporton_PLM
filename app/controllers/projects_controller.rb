@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   def index
+    @projects=Project.all
   end
 
   def new
@@ -18,9 +19,13 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def edit
+    @project=Project.find(params[:id])
+    
+  end
+
 
   private
-
   def project_permit
     params.require(:project).permit(:receive_date,:project_number,:product_number,:product_name,:salesman,:customer,:PM)
   end

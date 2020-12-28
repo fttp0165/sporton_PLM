@@ -1,33 +1,50 @@
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">test</th>
-        <th scope="col">test</th>
-        <th scope="col">test</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>test</td>
-        <td>test</td>
-        <td>@test</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>test</td>
-        <td>test</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>test</td>
-        <td>test</td>
-        <td>@fat</td>
-      </tr>
+<div class="row">
+  <div class="col-1">
+  </div>
+  <div class="col-8">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">收件日</th>
+            <th scope="col">案號</th>
+            <th scope="col">客戶</th>
+            <th scope="col">產品型號</th>
+            <th scope="col">業務</th>
+            <th scope="col">負責PM</th>
+            <th scope="col">編輯</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @projects.each do |project|%>
+          <tr>
+            <!-- 收件日 -->
+            <td><%=project.receive_date%></td>
+            <!-- 案號 -->
+            <td><%=project.project_number%></td>
+             <!-- 客戶 -->
+            <td><%=project.customer%></td> 
+             <!-- 產品型號 -->
+             <td><%=project.product_number%></td> 
+               <!-- 業務 -->
+            <td><%=project.salesman%></td> 
+               <!-- 負責ＰＭ -->
+            <td><%=project.PM%></td> 
+              <!-- edit -->
+            <td><%= link_to  '編輯',edit_project_path(project) %></td> 
+            
 
-    </tbody>
-  </table>
+            
+          </tr>
+          <%end%>
+       
+    
+        </tbody>
+      </table>
+    </div>
+
+
+
+  </div>
+
 </div>

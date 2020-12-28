@@ -1,0 +1,64 @@
+
+<div class="row">
+      <div class="col-2">
+            <div class="alert alert-primary col-12" role="alert"> <a class="nav-link" href="#Info">INFO</a></div>
+      </div>
+      <div class="col-2">
+            <div class=" col-12" role="alert"><span></span></div>
+      </div>
+      <div class="col-6">
+            <h4 id="Info">案件資訊</h4>
+            <table  class="table table-striped">
+                    <%= form_for @project do |form|  %>
+                    <tr>
+                      <td><%=form.label :receive_date,'收件時間'%></td>
+                      <td><%=form.date_field :receive_date,value:@current_time,class:'form-control form_input'%></td>
+                    </tr>
+                    <tr>
+                      <td><%=form.label :project_number,'案號'%></td>
+                      <td><%=form.text_field :project_number,class:'form-control form_input'%></td>
+                    </tr>
+                    <tr>
+                      <td><%=form.label :customer,'客戶'%></td>
+                      <td><%=form.text_field :customer,class:'form-control form_input'%></td>
+                    </tr>
+                    <tr>
+                      <td><%=form.label :product_number,'產品型號'%></td>
+                      <td><%=form.text_field :product_number,class:'form-control form_input'%></td>
+                    </tr>
+                    <tr>
+                      <td><%=form.label :product_name,'產品名稱'%></td>
+                      <td><%=form.text_field :product_name,class:'form-control form_input'%></td>
+                    </tr>
+                    <tr>
+                        <td><%=form.label :salesman,'業務'%></td>
+                        <td><%=form.text_field :salesman,class:'form-control form_input'%></td>
+                    </tr>
+                    <tr>
+                        <td><%=form.label :PM,'負責PM'%></td>
+                        <td><%=form.text_field :PM ,value:current_user.name ,class:'form-control form_input'%></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="row">
+                <div class="col-12">
+                      
+                      <%if @project.try(:errors)%>
+                        <ul style="list-style:none; color:red;">
+                        <% @project.errors.full_messages.each do |e|%>
+                         <li><%=e%></li>
+                        <%end%>
+                        </ul>
+                      <%end%>
+                        
+                </div>
+                <div class="col-8"></div>
+                <%=form.submit :建立, class:"btn btn-success col-1" %>
+                </div>
+                <hr>
+              
+        <%end%>
+      </div>
+      
+     
+</div>
