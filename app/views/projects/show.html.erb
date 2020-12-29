@@ -1,26 +1,52 @@
+<div class="container">
+      <!-- Content here -->
+      <div class="row">
 
-                    <table  class="table table-striped">
-                    <tr>
-                      <td>收件時間</td>
-                      <td><%= "#{@project.receive_date}"%></td>
-                    </tr>
-                    <tr>
-                    <td>案號</td>
-                    <td><%= "#{@project.project_number}"%></td>
-                    </tr>
+            <table class="table table-striped project_show_table">
+                  <tr>
+                        <td>收件時間</td>
+                        <td>
+                              <%= "#{@project.receive_date}" %>
+                        </td>
+                  </tr>
+                  <tr>
+                        <td>案號</td>
+                        <td>
+                              <%= "#{@project.project_number}" %>
+                        </td>
+                  </tr>
+                  <tr>
+                        <td>客戶</td>
+                        <td>
+                              <%= "#{@project.customer}" %>
+                        </td>
+                  </tr>
+                  <tr>
+                        <td>產品型號</td>
+                        <td>
+                              <%= "#{@project.product_number}" %>
+                        </td>
+                  </tr>
+                  <tr>
+                        <td>產品型號</td>
+                        <td>
+                              <%= "#{@project.product_name}" %>
+                        </td>
+                  </tr>
+                  <tr>
+                        <td>業務</td>
+                        <td>
+                              <%= "#{@project.salesman}" %>
+                        </td>
+                  </tr>
+                  <tr>
+                        <td>負責PM</td>
+                        <td>
+                              <%= "#{@project.PM}" %>
+                        </td>
+                  </tr>
 
+            </table>
+      </div>
 
-                 
-                      <!-- <td>project_number,'案號'</td>
-                
-                      <td>@project.label :customer,'客戶'</td>
-                 
-                      <td>@project.label :product_number,'產品型號'</td>
-                  
-                      <td>@project.label :product_name,'產品名稱'</td>
-                        <td>@project.label :salesman,'業務'</td>
-              
-                        <td>@project.label :PM,'負責PM'</td> -->
-                 
-             
-                </table>
+</div>

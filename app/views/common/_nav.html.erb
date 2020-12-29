@@ -1,17 +1,29 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-      <%=image_tag "/images/sporton.jpg"%>
+  <%=link_to "#{image_tag '/images/sporton.jpg'}".html_safe,root_path,class:"nav-link "%>
+      <!-- <%=image_tag "/images/sporton.jpg"%> -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-    
+   
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <h2>
-            <a class="nav-link" href="#">PLM <span class="sr-only">(current)</span></a>
+            <%=link_to 'PLM',root_path,class:"nav-link"%>
             </h2>
           </li>
+          <%if current_user%>
+          <li class="nav-item ">
+            <h2>
+              <%=link_to "新增案件" ,new_project_path,class:"nav-link"%>
+            </h2>
+          </li>
+          <li class="nav-item ">
+            <h2>
+              <%=link_to "歸檔案件" ,root_path,class:"nav-link"%>
+            </h2>
+          </li>
+          <%end%>
         </ul>
         <%if current_user%>
         <form class="form-inline my-2 my-lg-0">

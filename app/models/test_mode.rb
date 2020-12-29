@@ -1,0 +1,2 @@
+class TestMode < ApplicationRecord
+end
