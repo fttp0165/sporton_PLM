@@ -5,40 +5,41 @@
                 <%= form_for @test_item do |t|  %>
                   <table  class="table table-striped">
                         <tr>
-                            <td><%=t.label :test_name,'法規:'%></td>
+                           <td><%=t.label :test_name,'法規:'%></td>
                       
                         <td>
-                          <%= t.select(:test_name) do %>
-                          <%country=['FCC','CE','EMC','NCC','C-TICK','IC','JR','WorldWide']%>
-                            <% country.each do |c| %>
-                            <%= content_tag(:option, c, value: c) %>
+                            <%= t.select(:test_name) do %>
+                              <%country=['966','TH','Fully','FD','RSE','TPC','DFS','Adaptivity','EMI','EMS','EP','PLC','Special']%>
+                                <% country.each do |c| %>
+                                  <%= content_tag(:option, c, value: c) %>
+                                <% end %>
                             <% end %>
-                          <% end %>
                         </td>
                        </tr>
                         <td>
                           <tr>
-                            <td><%=t.label :expected_date_of_delivery,'預計發證日'%></td>
+                            <td><%=t.label :expected_date_of_delivery,'預計完成日'%></td>
                             <td><%=t.date_field :expected_date_of_delivery,class:'form-control form_input'%></td>
                           </tr>
                         </td>
-                        <td>
-                              
-                              
+                        <td>   
                           <tr>
                               <td><%=t.label :status,'狀態:'%></td>
                               <td>
-                              <%= radio_button_tag(:status, "child") %>
-                              <%= label_tag(:status_no, "未完成") %>
-                              <%= radio_button_tag(:status, "adult") %>
-                              <%= label_tag(:status_ok, "完成") %>     
+                              <%= t.radio_button(:status, "未完成",:checked => true) %>
+                              <%= t.label(:status_no, "未完成") %>
+                              <%= t.radio_button(:status, "完成") %>
+                              <%= t.label(:status_ok, "完成") %>  
+                              <%= t.radio_button(:status, "pending") %>
+                              <%= t.label(:status_ok, "pending") %>        
                               </td>                         
                           </tr>
                         </td>
+                        <%=t.text_field :test_mode_id,value:@test_mode.id,class:'form-control form_input',style:"display:none"%>
                 </table>
                 <div class="row">
                 <div class="col-12">
-                      
+                
                       <%if @test_mode.try(:errors)%>
                         <ul style="list-style:none; color:red;">
                         <% @test_mode.errors.full_messages.each do |e|%>

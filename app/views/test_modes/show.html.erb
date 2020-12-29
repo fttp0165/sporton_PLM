@@ -1,7 +1,7 @@
 
       <!-- Content here -->
       <div class="row">
-            <div class="col-2">
+            <div class="col-2" style="height:100vh">
                   <div class="row">
                     <div class="alert alert-primary col-12" role="alert"> 
                     <%=link_to "新增測試",new_test_item_path(@test_mode),class:"nav-link "%>
@@ -15,23 +15,52 @@
                       </div>
                       <%end%>
                     <%end%>
+                
                   </div>
-                </div>
+
+             
+            </div>
+         
+      
+          
             <div class="col-8">
-            <table class="table table-striped project_show_table">
-                  <tr>
-                        <td>法規</td>
-                        <td>
-                              <%= "#{@test_mode.law_name}" %>
-                        </td>
-                  </tr>
-                  <tr>
-                        <td>預計完成日期</td>
-                        <td>
-                              <%= "#{@test_mode.expected_date_of_delivery}" %>
-                        </td>
-                  </tr>
-            </table>
-        </div>
+                  <table class="table table-striped project_show_table">
+                        <tr>
+                              <td>法規</td>
+                              <td>
+                                    <%= "#{@test_mode.law_name}" %>
+                              </td>
+                        </tr>
+                        <tr>
+                              <td>預計完成日期</td>
+                              <td>
+                                    <%= "#{@test_mode.expected_date_of_delivery}" %>
+                              </td>
+                        </tr>
+                  </table>
+                   <hr>
+                  <%@test_item.each do |test_item|%>
+                  <table class="table table-striped project_show_table">
+                        <tr>
+                              <td>測試項目</td>
+                              <td>
+                                    <%= "#{test_item.test_name}" %>
+                              </td>
+                        </tr>
+                        <tr>
+                              <td>預計完成日期</td>
+                              <td>
+                                    <%= "#{test_item.expected_date_of_delivery}" %>
+                              </td>
+                        </tr>
+                        <tr>
+                              <td>狀態</td>
+                              <td>
+                                    <%= "#{test_item.status}" %>
+                              </td>
+                        </tr>
+                  </table>
+                  <%end%>
+            </div>
       </div>
 
