@@ -14,14 +14,14 @@
                     <%= form_for @test_mode do |t|  %>
                     <table  class="table table-striped">
                     
-
+                    
                     <tr>
                         <td><%=t.label :law_name,'法規:'%></td>
                     <td>
-                      <%= select_tag(:law_name, '<option value="FCC">FCC</option>') %>
-                      <%= f.select(:law_name) do %>
-                        <% [['Lisbon', 1], ['Madrid', 2]].each do |c| -%>
-                        <%= content_tag(:option, c.first, value: c.last) %>
+                      <%= t.select(:law_name) do %>
+                      <%country=['FCC','CE','EMC','NCC','C-TICK','IC','JR','WorldWide']%>
+                        <% country.each do |c| %>
+                        <%= content_tag(:option, c, value: c) %>
                         <% end %>
                       <% end %>
                     <!-- <t.select name="law_name" id="law_name" class='form-control form_input'>
