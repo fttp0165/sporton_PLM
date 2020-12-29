@@ -2,11 +2,14 @@
 <div class="row">
       <div class="col-2">
         <div class="row">
-          <%=link_to "新增測試",new_test_mode_path,class:"alert alert-primary nav-link col-12"%>
-       
+          <%=link_to "新增測試",new_test_mode_path(@project),class:"alert alert-primary nav-link col-12"%>
           <div class="alert alert-primary col-12" role="alert"> <a class="nav-link" href="#Info">INFO</a></div>
+          <%if @test_mode_list %>
+            <%@test_mode_list.each do |l|%>
+              <%=link_to "#{l.law_name}", test_mode_path(l) ,class:"alert alert-primary nav-link col-12"%>
+            <%end%>
+          <%end%>
         </div>
-           
       </div>
       <div class="col-2">
             <div class=" col-12" role="alert"><span></span></div>

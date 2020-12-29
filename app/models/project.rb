@@ -6,5 +6,5 @@ class Project < ApplicationRecord
   #validates :product_name, presence: true #產品名稱     
   #validates :salesman, presence: true #業務   
   validates :PM, presence: true #負責PM    
-
+  has_many :test_modes
 end

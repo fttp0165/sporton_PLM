@@ -21,6 +21,7 @@ class ProjectsController < ApplicationController
 
   def edit
     @project=Project.find(params[:id])
+    @test_mode_list=@project.test_modes
   end
 
   def update
