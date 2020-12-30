@@ -20,6 +20,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    @comment=Comment.new
     @project=Project.find(params[:id])
     @test_mode_list=@project.test_modes
   end

@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_29_144827) do
+ActiveRecord::Schema.define(version: 2020_12_30_154151) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "project_id"
+    t.integer "test_mode_id"
+    t.integer "test_item_id"
+    t.integer "user_id"
+    t.string "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_comments_on_project_id"
+    t.index ["test_item_id"], name: "index_comments_on_test_item_id"
+    t.index ["test_mode_id"], name: "index_comments_on_test_mode_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string "name"

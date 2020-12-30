@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :projects 
   resources :test_modes 
   resources :test_items
-
+  resources :comments,shallow: true,except:[:index,:new,:show]
 end
