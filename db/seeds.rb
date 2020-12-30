@@ -8,15 +8,17 @@
 
 require 'faker'
 
-50.each do |t|
+(1..50).each do |t|
 
-      Project.creae(receive_date: Faker::Date.in_date_period)
-      t.date "receive_date"
-      t.string "project_number"
-      t.string "customer"
-      t.string "product_number"
-      t.string "product_name"
-      t.string "salesman"
-      t.string "PM"
+      faker_data={
+            receive_date: Faker::Date.in_date_period,
+            project_number: Faker::Device.serial,
+            customer: Faker::Device.manufacturer ,
+            product_number:Faker::Device.model_name ,
+            product_name:Faker::Device.model_name ,
+            salesman:Faker::Name.name ,
+            PM:Faker::Name.name 
+      }
 
+      Project.create(faker_data)
 end
