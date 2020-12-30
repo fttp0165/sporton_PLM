@@ -8,7 +8,7 @@
 
 require 'faker'
 
-(1..50).each do |t|
+(1..3000).each do |t|
 
       faker_data={
             receive_date: Faker::Date.in_date_period,
