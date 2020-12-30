@@ -23,7 +23,7 @@ class ProjectsController < ApplicationController
     @comment=Comment.new
    
     @project=Project.find(params[:id])
-    @comments=@project.comments
+    @comments=@project.comments.order(created_at: :desc)
     @test_mode_list=@project.test_modes
   end
 

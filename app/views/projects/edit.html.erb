@@ -79,7 +79,8 @@
             <%= render "./comments/comment",comment:@comment%>
             <%if @comments%>
               <%@comments.each do |c|%>
-                <li><%=c.content%></li>
+                <li class=" alert alert-primary"><%=c.content%>  </li>
+                <li></li><%=time_tag c.created_at += 28000%></li>
               <%end%>
             <%end%>
           </ul>
