@@ -76,7 +76,12 @@
           <%end%>
           <hr>
           <ul class="comments">
-            <%= render edit_project_path(@project) %>
+            <%= render "./comments/comment",comment:@comment%>
+            <%if @comments%>
+              <%@comments.each do |c|%>
+                <li><%=c.content%></li>
+              <%end%>
+            <%end%>
           </ul>
       </div>
       

@@ -13,16 +13,12 @@
 ActiveRecord::Schema.define(version: 2020_12_30_154151) do
 
   create_table "comments", force: :cascade do |t|
-    t.integer "project_id"
-    t.integer "test_mode_id"
-    t.integer "test_item_id"
-    t.integer "user_id"
+    t.integer "project_id", null: false
+    t.integer "user_id", null: false
     t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["project_id"], name: "index_comments_on_project_id"
-    t.index ["test_item_id"], name: "index_comments_on_test_item_id"
-    t.index ["test_mode_id"], name: "index_comments_on_test_mode_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -75,6 +71,8 @@ ActiveRecord::Schema.define(version: 2020_12_30_154151) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "projects"
+  add_foreign_key "comments", "users"
   add_foreign_key "test_items", "test_modes"
   add_foreign_key "test_modes", "projects"
 end
