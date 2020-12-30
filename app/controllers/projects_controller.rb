@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   def index
-    @projects=Project.page(params[:page]).per(10).order(id: :desc)
+    @projects=Project.page(params[:page]).per(50).order(id: :desc)
   end
 
   def new
