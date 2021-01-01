@@ -16,6 +16,12 @@ class TestModesController < ApplicationController
      end
   end
 
+  def edit
+    @project=Project.find(params[:format])
+    @test_mode=TestMode.find(params[:id])
+    @test_item=@test_mode.test_items
+  end
+
   def show
     @test_mode=TestMode.find(params[:id])
     @test_item=@test_mode.test_items
