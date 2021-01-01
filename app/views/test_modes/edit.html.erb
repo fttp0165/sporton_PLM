@@ -1,15 +1,27 @@
 
 <div class="row">
-      <div class="col-2">
-            <div class="alert alert-primary col-12" role="alert"> <a class="nav-link" href="#Info">INFO</a></div>
-      </div>
-      <div class="col-2">
-            <div class=" col-12" role="alert"><span></span></div>
-      </div>
-      <div class="col-6">
-            <h4 id="Info">案件資訊</h4>
+      <div class="row">
+            <div class="col-2" style="height:100vh">
+                  <div class="row">
+                    <div class="alert alert-primary col-12" role="alert"> 
+                    <%=link_to "新增測試",new_test_item_path(@test_mode),class:"nav-link "%>
+                    </div>
+                    <div class="alert alert-primary col-12" role="alert"> <a class="nav-link" href="#Info">INFO</a>
+                    </div>
+                    <%if @test_mode_list %>
+                      <%@test_mode_list.each do |l|%>
+                      <div class="alert alert-primary col-12" role="alert">
+                        <%=link_to " #{l.law_name}", test_mode_path(l) ,class:"nav-link"%>
+                      </div>
+                      <%end%>
+                    <%end%>
+                
+                  </div>
 
-         
+             
+      </div>
+      <div class="col-8">
+            <h4 id="Info">測試法規</h4>
                     <h3><%="案號：#{@project.project_number}"%></h3>
                     <%= form_for @test_mode do |t|  %>
                     <table  class="table table-striped">
@@ -50,7 +62,7 @@
                         
                 </div>
                 <div class="col-8"></div>
-                <%=t.submit :建立, class:"btn btn-success col-1" %>
+                <%=t.submit :修改, class:"btn btn-success col-2" %>
                 </div>
                 <hr>
               

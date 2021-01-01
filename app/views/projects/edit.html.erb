@@ -75,12 +75,13 @@
           <%=c.submit :留言,class:"btn btn-success"%>
           <%end%>
           <hr>
+          <%if @comments%>
           <ul class="comments">
-            <%= render "./comments/comment",comment:@comment%>
-            <%if @comments%>
+            
               <%@comments.each do |c|%>
-                <li class=" alert alert-primary"><%=c.content%>  </li>
-                <li></li><%=time_tag c.created_at += 28000%></li>
+              <%= render "./comments/comment",comment:c%>
+                <!-- <li class=" alert alert-primary"><%=c.content%></li> -->
+                <!-- <li><%=time_tag c.created_at += 28000%></li> -->
               <%end%>
             <%end%>
           </ul>
