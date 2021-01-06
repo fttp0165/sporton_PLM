@@ -7,6 +7,5 @@ class Project < ApplicationRecord
   #validates :salesman, presence: true #業務   
   validates :PM, presence: true #負責PM    
   has_many :test_modes
-  belongs_to :user
   has_many :comments, as: :commentable
 end
