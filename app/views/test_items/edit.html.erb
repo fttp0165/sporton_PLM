@@ -1,79 +1,84 @@
-
 <div class="row">
-            <div class="col-2" >
-                  <div class="row">
-                 
-                    <div class="alert alert-primary col-12" role="alert"> <a class="nav-link" href="#Info">INFO</a>
-                    </div>
-
-                    <%if @test_item_list %>
-                      <%@test_item_list.each do |l|%>
+      <div class="col-2">
+            <div class="row">
+                  <div class="alert alert-primary col-12" role="alert"> <a class="nav-link" href="#Info">INFO</a></div>
+                  <%if @test_item_list %>
+                    <%@test_item_list.each do |l|%>
                       <div class="alert alert-primary col-12" role="alert">
-                        <%=link_to " #{l.law_name}", test_mode_path(l) ,class:"nav-link"%>
+                        <%=link_to " #{l.law_name}" , test_mode_path(l) ,class:"nav-link"%>
                       </div>
-                      <%end%>
                     <%end%>
-                  </div>
+                  <%end%>
+            </div>
       </div>
- 
-
       <div class="col-6">
             <h4 id="Info">測試法規</h4>
-                    <%= form_for @test_item do |t|  %>
-                    <table  class="table table-striped">
-                    <tr>
-                        <td><%=t.label :law_name,'法規:'%></td>
-                    <td>
-                        <%= t.select(:test_name) do %>
-                        <%country=['966','TH','Fully','FD','RSE','TPC','DFS','Adaptivity','EMI','EMS','EP','PLC','Special']%>
-                        <% country.each do |c| %>
-                        <%= content_tag(:option, c, value: c) %>
-                        <% end %>
-                      <% end %>
-         
-                  </td>
-                  <td>
-                  </tr>
-                    <tr>
-                      <td><%=t.label :expected_date_of_delivery,'預計發證日'%></td>
-                      <td><%=t.date_field :expected_date_of_delivery,class:'form-control form_input'%></td>
-                    </tr>
-                  </td>
-                  
-                  <%#=t.text_field :project_id,value:@project.id,class:'form-control form_input',style:"display:none"%>
-                
-                </table>
-                <div class="row">
-                <div class="col-12">
-                      
-                      <%if @test_item.try(:errors)%>
-                        <ul style="list-style:none; color:red;">
-                        <% @test_item.errors.full_messages.each do |e|%>
-                         <li><%=e%></li>
+            <%= form_for @test_item do |t| %>
+                  <table class="table table-striped">
+                        <tr>
+                              <td>
+                                <%=t.label :law_name,'法規:'%>
+                              </td>
+                              <td>
+                                <%= t.select(:test_name, class:"dropdown-toggle") do %>
+                                  <%country=['966','TH','Fully','FD','RSE','TPC','DFS','Adaptivity','EMI','EMS','EP','PLC','Special']%>
+                                  <% country.each do |c| %>
+                                    <%= content_tag(:option, c, value: c,class:"dropdown-item") %>
+                                  <% end %>
+                                <% end %>
+                              </td>
+                            
+                        </tr>
+                        <tr>
+                              <td>
+                                <%=t.label :expected_date_of_delivery,'預計發證日'%>
+                              </td>
+                              <td>
+                                <%=t.date_field :expected_date_of_delivery,class:'form-control form_input'%>
+                              </td>
+
+                        </tr>
+                        <tr>
+                              <td>狀態</td>
+                              <td>
+                                <%= t.radio_button :status,0 %>
+                                <%= t.label :status, "未完成" %>
+                                <%= t.radio_button :status,1 %>
+                                <%= t.label :status, "完成" %>
+                              </td>
+                              </td>
+                        </tr>
+
+                  </table>
+                  <div class="row">
+                        <div class="col-12">
+                              <%if @test_item.try(:errors)%>
+                                <ul style="list-style:none; color:red;">
+                                  <% @test_item.errors.full_messages.each do |e|%>
+                                    <li><%=e%></li>
+                                  <%end%>
+                                </ul>
+                              <%end%>
+
+                        </div>
+                        <div class="col-8"></div>
+                        <%=t.submit :修改, class:"btn btn-success col-2" %>
+                  </div>
+                  <hr>
+                  <%end%>
+                        <%=form_for @comment ,url:test_item_comments_path(@test_item),remote: true do |c|%>
+                          <%=c.text_area :content,class:"form-control" %>
+                          <%=c.submit :留言,class:"btn btn-success"%>
                         <%end%>
-                        </ul>
-                      <%end%>
-                        
-                </div>
-                <div class="col-8"></div>
-                <%=t.submit :修改, class:"btn btn-success col-2" %>
-                </div>
-                <hr>
-        <%end%>
-        <%=form_for @comment ,url:test_item_comments_path(@test_item),remote: true  do |c|%>
-        <%=c.text_area :content,class:"form-control" %>
-        <%=c.submit :留言,class:"btn btn-success"%>
-        <%end%>
-        <hr>
-        <%if @comments%>
-        <ul class="comments">     
-            <%@comments.each do |c|%>
-            <%= render "./comments/comment",comment:c%>
-            <%end%>
-        <%end%>
-        </ul>      
-        
+                        <hr>
+                        <%if @comments%>
+                          <ul class="comments">
+                            <%@comments.each do |c|%>
+                              <%= render "./comments/comment" ,comment:c%>
+                            <%end%>
+                          </ul>
+                        <%end%>
       </div>
-      
-     
+
+
 </div>
