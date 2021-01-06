@@ -1,11 +1,8 @@
 
 <div class="row">
-      <div class="row">
-            <div class="col-2" style="height:100vh">
+            <div class="col-2" >
                   <div class="row">
-                    <div class="alert alert-primary col-12" role="alert"> 
-                    <%=link_to "新增測試",new_test_item_path(@test_item),class:"nav-link "%>
-                    </div>
+                 
                     <div class="alert alert-primary col-12" role="alert"> <a class="nav-link" href="#Info">INFO</a>
                     </div>
 
@@ -16,14 +13,12 @@
                       </div>
                       <%end%>
                     <%end%>
-                
                   </div>
-
-             
       </div>
-      <div class="col-8">
+ 
+
+      <div class="col-6">
             <h4 id="Info">測試法規</h4>
-                  
                     <%= form_for @test_item do |t|  %>
                     <table  class="table table-striped">
                     <tr>
