@@ -10,7 +10,7 @@
       <%if @test_item_list %>
         <%@test_item_list.each do |l|%>
           <div class="alert alert-primary col-12" role="alert">
-            <%=link_to " #{l.test_name}" , edit_test_item_path(l) ,class:"nav-link"%>
+            <%=link_to " #{l.test_name}" , edit_test_item_path(l,@project) ,class:"nav-link"%>
           </div>
           <%end%>
             <%end%>

@@ -48,7 +48,7 @@
                               </td>
                               </td>
                         </tr>
-
+                        <%=t.text_field :project_id,value:@project.id,style:"display:none"%>
                   </table>
                   <div class="row">
                         <div class="col-12">
@@ -62,7 +62,7 @@
 
                         </div>
                         <div class="col-8"></div>
-                        <%=t.submit :修改, class:"btn btn-success col-2" %>
+                        <%=t.submit :更新, class:"btn btn-success col-2" %>
                   </div>
                   <hr>
                   <%end%>

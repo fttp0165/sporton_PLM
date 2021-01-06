@@ -11,6 +11,8 @@
             <th scope="col">案號</th>
             <th scope="col">客戶</th>
             <th scope="col">產品型號</th>
+            <th scope="col">項目</th>
+            <th scope="col">狀態</th>
             <th scope="col">業務</th>
             <th scope="col">負責PM</th>
             <th scope="col">編輯</th>
@@ -27,6 +29,18 @@
             <td><%=project.customer%></td> 
              <!-- 產品型號 -->
              <td><%=project.product_number%></td> 
+                <!-- 項目 -->
+             <td> 
+               <div class="row">
+                 <%project.test_modes.each do |test_mode|%>
+                     <span class="col-12">
+                       <%=test_mode.law_name%>
+                     </span>
+                 <%end%>
+               </div>
+             </td>
+               <!-- 狀態 -->
+            <td><%=project.salesman%></td> 
                <!-- 業務 -->
             <td><%=project.salesman%></td> 
                <!-- 負責ＰＭ -->

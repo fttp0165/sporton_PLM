@@ -19,11 +19,26 @@ class TestItemsController < ApplicationController
  end
 
  def edit
+  @project=Project.find(params[:format])
   @comment=Comment.new
   @test_item=TestItem.find(params[:id])
   @comments=@test_item.comments.order(created_at: :desc)
 end
 
+
+
+def update
+  
+  @project=Project.find(params[:test_item][:project_id])
+  @test_mode=TestItem.find(params[:id])
+  if @test_mode.update(item_permit)
+    flash[:notice]="更新成功"
+    redirect_to edit_test_item_path(@test_mode,@project)
+  else
+    flash[:notice]="更新失敗"
+    render :edit
+  end
+end
 
  private
 
