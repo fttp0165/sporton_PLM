@@ -16,6 +16,18 @@ class TestModesController < ApplicationController
      end
   end
 
+  def update
+    @project=Project.find(params[:test_mode][:project_id])
+    @test_mode=TestMode.find(params[:id])
+    if @test_mode.update(test_primet)
+      flash[:notice]="更新成功"
+      redirect_to edit_test_mode_path(@test_mode,@project)
+    else
+      flash[:notice]="更新失敗"
+      render :edit
+    end
+  end
+
   def edit
     @comment=Comment.new
     @project=Project.find(params[:format])
