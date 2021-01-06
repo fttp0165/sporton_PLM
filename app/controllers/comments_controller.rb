@@ -7,6 +7,8 @@ class CommentsController < ApplicationController
       @type_belong=Project.find(type_permit)
      when params.include?(:test_mode_id)
       @type_belong=TestMode.find(type_permit)
+     when params.include?(:test_item_id)
+      @type_belong=TestItem.find(type_permit)
      else
       render 'project/edit',@project
      end
@@ -29,6 +31,8 @@ class CommentsController < ApplicationController
       params.require(:project_id)
     when params.include?(:test_mode_id)
       params.require(:test_mode_id)
+    when params.include?(:test_item_id)
+      params.require(:test_item_id)
     else
       render 'project/edit',@project
     end

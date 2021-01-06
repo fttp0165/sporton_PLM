@@ -18,6 +18,12 @@ class TestItemsController < ApplicationController
    end
  end
 
+ def edit
+  @comment=Comment.new
+  @test_item=TestItem.find(params[:id])
+  @comments=@test_item.comments.order(created_at: :desc)
+end
+
 
  private
 

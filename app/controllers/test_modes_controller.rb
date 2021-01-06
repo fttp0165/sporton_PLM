@@ -18,11 +18,10 @@ class TestModesController < ApplicationController
 
   def edit
     @comment=Comment.new
-    
     @project=Project.find(params[:format])
     @test_mode=TestMode.find(params[:id])
     @comments=@test_mode.comments.order(created_at: :desc)
-    @test_item=@test_mode.test_items
+    @test_item_list=@test_mode.test_items
   end
 
   def show

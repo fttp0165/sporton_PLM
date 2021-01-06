@@ -4,14 +4,15 @@
             <div class="col-2" style="height:100vh">
                   <div class="row">
                     <div class="alert alert-primary col-12" role="alert"> 
-                    <%=link_to "新增測試",new_test_item_path(@test_mode),class:"nav-link "%>
+                    <%=link_to "新增測試",new_test_item_path(@test_item),class:"nav-link "%>
                     </div>
                     <div class="alert alert-primary col-12" role="alert"> <a class="nav-link" href="#Info">INFO</a>
                     </div>
+
                     <%if @test_item_list %>
                       <%@test_item_list.each do |l|%>
                       <div class="alert alert-primary col-12" role="alert">
-                        <%=link_to " #{l.test_name}", edit_test_item_path(l) ,class:"nav-link"%>
+                        <%=link_to " #{l.law_name}", test_mode_path(l) ,class:"nav-link"%>
                       </div>
                       <%end%>
                     <%end%>
@@ -22,16 +23,14 @@
       </div>
       <div class="col-8">
             <h4 id="Info">測試法規</h4>
-                    <h3><%="案號：#{@project.project_number}"%></h3>
-                    <%= form_for @test_mode do |t|  %>
+                  
+                    <%= form_for @test_item do |t|  %>
                     <table  class="table table-striped">
-                    
-                    
                     <tr>
                         <td><%=t.label :law_name,'法規:'%></td>
                     <td>
-                      <%= t.select(:law_name) do %>
-                      <%country=['FCC','CE','EMC','NCC','C-TICK','IC','JR','WorldWide']%>
+                        <%= t.select(:test_name) do %>
+                        <%country=['966','TH','Fully','FD','RSE','TPC','DFS','Adaptivity','EMI','EMS','EP','PLC','Special']%>
                         <% country.each do |c| %>
                         <%= content_tag(:option, c, value: c) %>
                         <% end %>
@@ -46,15 +45,15 @@
                     </tr>
                   </td>
                   
-                  <%=t.text_field :project_id,value:@project.id,class:'form-control form_input',style:"display:none"%>
+                  <%#=t.text_field :project_id,value:@project.id,class:'form-control form_input',style:"display:none"%>
                 
                 </table>
                 <div class="row">
                 <div class="col-12">
                       
-                      <%if @test_mode.try(:errors)%>
+                      <%if @test_item.try(:errors)%>
                         <ul style="list-style:none; color:red;">
-                        <% @test_mode.errors.full_messages.each do |e|%>
+                        <% @test_item.errors.full_messages.each do |e|%>
                          <li><%=e%></li>
                         <%end%>
                         </ul>
@@ -66,7 +65,7 @@
                 </div>
                 <hr>
         <%end%>
-        <%=form_for @comment ,url:test_mode_comments_path(@test_mode),remote: true  do |c|%>
+        <%=form_for @comment ,url:test_item_comments_path(@test_item),remote: true  do |c|%>
         <%=c.text_area :content,class:"form-control" %>
         <%=c.submit :留言,class:"btn btn-success"%>
         <%end%>

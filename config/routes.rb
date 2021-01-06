@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :test_modes do
     resources :comments,shallow: true,except:[:index,:new,:show]
   end
-  resources :test_items
-  resources :comments,shallow: true,except:[:index,:new,:show]
+  resources :test_items do
+    resources :comments,shallow: true,except:[:index,:new,:show]
+  end
+  
 end
