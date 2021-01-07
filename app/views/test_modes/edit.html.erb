@@ -29,12 +29,10 @@
             <%=t.label :law_name,'法規:'%>
           </td>
           <td>
-            <%= t.select(:law_name) do %>
-              <%country=['FCC','CE','EMC','NCC','C-TICK','IC','JR','WorldWide']%>
-                <% country.each do |c| %>
-                  <%= content_tag(:option, c, value: c) %>
-                <% end %>
-            <% end %>
+            <%= t.select :law_name ,
+                  options_for_select(['FCC','CE','EMC','NCC','C-TICK','IC','JR','WorldWide'], 
+                  selected: t.object.law_name),
+                  class:"dropdown-toggle" %>
           </td>
           <td>
         </tr>

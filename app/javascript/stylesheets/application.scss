@@ -18,3 +18,18 @@
       border: solid 1px black;
       padding: 0 5px;
 }
+.doit{
+     background-color: white; 
+}
+.finish{
+      background-color: green; 
+      border:  green; 
+ }
+ .Overdue{
+      background-color: red; 
+      border:  red; 
+ }
+ .pending{
+      background-color: rgb(241, 109, 244);
+      border:  rgb(241, 109, 244); 
+ }

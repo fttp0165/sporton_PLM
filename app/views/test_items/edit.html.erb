@@ -12,20 +12,18 @@
             </div>
       </div>
       <div class="col-6">
-            <h4 id="Info">測試法規</h4>
+            <h4 id="Info">測試法規: <%=@test_item.test_name%></h4>
             <%= form_for @test_item do |t| %>
                   <table class="table table-striped">
                         <tr>
                               <td>
-                                <%=t.label :law_name,'法規:'%>
+                                <%=t.label :law_name,'法規:'%> <%=@test_item.test_name%>
                               </td>
                               <td>
-                                <%= t.select(:test_name, class:"dropdown-toggle") do %>
-                                  <%country=['966','TH','Fully','FD','RSE','TPC','DFS','Adaptivity','EMI','EMS','EP','PLC','Special']%>
-                                  <% country.each do |c| %>
-                                    <%= content_tag(:option, c, value: c,class:"dropdown-item") %>
-                                  <% end %>
-                                <% end %>
+                                <%= t.select :test_name ,
+                                  options_for_select(['966','TH','Fully','FD','RSE','TPC','DFS','Adaptivity','EMI','EMS','EP','PLC','Special'], 
+                                  selected: t.object.test_name),
+                                  class:"dropdown-toggle" %>
                               </td>
                             
                         </tr>
@@ -41,10 +39,12 @@
                         <tr>
                               <td>狀態</td>
                               <td>
-                                <%= t.radio_button :status,0 %>
-                                <%= t.label :status, "未完成" %>
-                                <%= t.radio_button :status,1 %>
-                                <%= t.label :status, "完成" %>
+                                    <%= t.radio_button(:status, "未完成",:checked => true) %>
+                                    <%= t.label(:status_no, "未完成") %>
+                                    <%= t.radio_button(:status, "完成") %>
+                                    <%= t.label(:status_ok, "完成") %>  
+                                    <%= t.radio_button(:status, "pending") %>
+                                    <%= t.label(:status_ok, "pending") %>  
                               </td>
                               </td>
                         </tr>
