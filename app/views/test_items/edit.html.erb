@@ -20,6 +20,7 @@
                                 <%=t.label :law_name,'法規:'%> <%=@test_item.test_name%>
                               </td>
                               <td>
+                                <!-- select_tag -->
                                 <%= t.select :test_name ,
                                   options_for_select(['966','TH','Fully','FD','RSE','TPC','DFS','Adaptivity','EMI','EMS','EP','PLC','Special'], 
                                   selected: t.object.test_name),
