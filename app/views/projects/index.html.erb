@@ -31,9 +31,9 @@
              <td><%=project.product_number%></td> 
                 <!-- 項目 -->
              <td> 
-               <div class="row">
+               <div class="row" >
                  <%project.test_modes.each do |test_mode|%>
-                     <span class="col-12">
+                     <span class="col-12" style="margin:0 5px 10px 0;">
                        <%=test_mode.law_name%>
                      </span>
                  <%end%>
@@ -41,16 +41,14 @@
              </td>
                <!-- 狀態 -->
                <td> 
-                <div class="row">
-                  <%(1...3).each do |r|%>
+                <div class="row" style="margin:0 5px">
+                  <%project.test_modes.each do |test_mode|%>
                   <div class="row">
-                    <%project.test_modes.each do |test_mode|%>
-                        <span class="col-1">
-                          <p class="statusLight "></p>
+                    <%test_mode.test_items.each do |test_item|%>
+                        <span class="col-1 d-inline-block" tabindex="0" data-bs-toggle="tooltip"  title=<%="#{test_mode.law_name}_#{test_item.test_name}"%> >
+                          <p class="statusLight" style="pointer-events: none;" data-status=<%=test_item.status%>> </p>
                         </span>
-                        <span class="col-1">
-                          <p class="statusLight "></p>
-                        </span>
+                   
                     <%end%>
                   </div>
                     <br />

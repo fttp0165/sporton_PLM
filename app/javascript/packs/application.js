@@ -12,6 +12,7 @@ require("popper.js")
 require("bootstrap")
 require("./bootstrap_cus.js")
 import "../stylesheets/application" 
+require("script") 
 document.addEventListener("turbolinks:load", () => {
       $('[data-toggle="tooltip"]').tooltip()
       $('[data-toggle="popover"]').popover()
