@@ -2,9 +2,9 @@
   <div class="col-1"></div>
  
   
-  <div class="col-8">
+  <div class="col-10">
     <div class="table-responsive">
-      <table class="table">
+      <table class="table ">
         <thead>
           <tr>
             <th scope="col">收件日</th>
@@ -40,7 +40,23 @@
                </div>
              </td>
                <!-- 狀態 -->
-            <td><%=project.salesman%></td> 
+               <td> 
+                <div class="row">
+                  <%(1...3).each do |r|%>
+                  <div class="row">
+                    <%project.test_modes.each do |test_mode|%>
+                        <span class="col-1">
+                          <p class="statusLight "></p>
+                        </span>
+                        <span class="col-1">
+                          <p class="statusLight "></p>
+                        </span>
+                    <%end%>
+                  </div>
+                    <br />
+                  <%end%>
+                </div>
+              </td>
                <!-- 業務 -->
             <td><%=project.salesman%></td> 
                <!-- 負責ＰＭ -->
