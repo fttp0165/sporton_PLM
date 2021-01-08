@@ -1,8 +1,8 @@
-<li class=" alert alert-primary shadow p-3 mb-5 bg-white rounded" style="margin-bottom: 0;">
-     <PRE> <%=comment.content%> </PRE>
-     <div class="row">
-      <div class="col-10"></div>     
+<li class=" alert alert-primary shadow p-5 mb-5 bg-white rounded comment_block" >
+     <PRE class="col-12"> <%=comment.content%> </PRE>
+     <div class="row ">
+      <div class="col-8"></div>    
+      <span class="col"></span><%=time_tag comment.created_at += 28000%></span>
      <span class="col"><%=comment.user.name%></span>
      </div>
 </li>
-  <li style="margin-bottom: 10px;"><%=time_tag comment.created_at += 28000%></li>
