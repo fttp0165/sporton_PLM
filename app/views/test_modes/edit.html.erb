@@ -1,19 +1,19 @@
 <div class="row">
-
   <div class="col-2" style="height:100vh">
     <div class="row">
-      <div class="alert alert-primary col-12" role="alert">
-        <%=link_to "新增測試" ,new_test_item_path(@test_mode),class:"nav-link "%>
-                    </div>
-                    <div class=" alert alert-primary col-12" role="alert"> <a class="nav-link" href="#Info">INFO</a>
-      </div>
-      <%if @test_item_list %>
-        <%@test_item_list.each do |l|%>
-          <div class="alert alert-primary col-12" role="alert">
-            <%=link_to " #{l.test_name}" , edit_test_item_path(l,@project) ,class:"nav-link"%>
-          </div>
+        <div class="alert alert-primary col-12" role="alert">
+          <%=link_to "新增測試" ,new_test_item_path(@test_mode),class:"nav-link "%>
+        </div>
+        <div class=" alert alert-primary col-12" role="alert"> 
+          <%=link_to "返回檔案",edit_project_path(@project),class:"nav-link"%>
+        </div>
+        <%if @test_item_list %>
+          <%@test_item_list.each do |l|%>
+            <div class="alert alert-primary col-12" role="alert">
+              <%=link_to " #{l.test_name}" , edit_test_item_path(l,@page_id) ,class:"nav-link"%>
+            </div>
           <%end%>
-            <%end%>
+        <%end%>
     </div>
   </div>
 
@@ -46,6 +46,7 @@
         </tr>
         </td>
         <%=t.text_field :project_id,value:@project.id,style:"display:none"%>
+        <%=t.text_field :test_mode_id,value:@test_mode.id,style:"display:none"%>
       </table>
          <div class="row">
            <div class="col-12">
@@ -62,6 +63,7 @@
          </div>
      <%end%>
       <hr>
+      <!-- 顯示留言 -->
         <%=form_for @comment ,url:test_mode_comments_path(@test_mode),remote: true do |c|%>
           <%=c.text_area :content,class:"form-control" %>
           <%=c.submit :留言,class:"btn btn-success"%>

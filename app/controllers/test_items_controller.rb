@@ -19,10 +19,12 @@ class TestItemsController < ApplicationController
  end
 
  def edit
-  @project=Project.find(params[:format])
+  @project=Project.find(project_id_primet)
+  @test_mode=Project.find(test_mode_primet)
   @comment=Comment.new
   @test_item=TestItem.find(params[:id])
   @comments=@test_item.comments.order(created_at: :desc)
+  @page_id={:project_id=>@project.id,:test_mode_id=> @test_mode.id}
 end
 
 
@@ -44,6 +46,12 @@ end
 
   def item_permit
     params.require(:test_item).permit(:test_name,:expected_date_of_delivery,:status)
+  end
+  def project_id_primet
+    params.require(:project_id)
+  end
+  def test_mode_primet
+    params.require(:test_mode_id)
   end
 
 end

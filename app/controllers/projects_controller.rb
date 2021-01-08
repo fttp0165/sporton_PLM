@@ -21,10 +21,10 @@ class ProjectsController < ApplicationController
 
   def edit
     @comment=Comment.new
-   
     @project=Project.find(params[:id])
     @comments=@project.comments.order(created_at: :desc)
     @test_mode_list=@project.test_modes
+    @page_id={:project_id=>@project.id}
   end
 
   def update

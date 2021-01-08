@@ -29,11 +29,17 @@ class TestModesController < ApplicationController
   end
 
   def edit
+
     @comment=Comment.new
-    @project=Project.find(params[:format])
-    @test_mode=TestMode.find(params[:id])
+    @project=Project.find(project_id_primet)
+    if params.include?(:test_mode_id)
+      @test_mode=TestMode.find(test_mode_primet)
+    else
+      @test_mode=TestMode.find(params[:id])
+    end  
     @comments=@test_mode.comments.order(created_at: :desc)
     @test_item_list=@test_mode.test_items
+    @page_id={:project_id=>@project.id,:test_mode_id=> @test_mode.id}
   end
 
   def show
@@ -45,7 +51,12 @@ private
 
 def test_primet
   params.require(:test_mode).permit(:law_name,:expected_date_of_delivery)
-      
+end
+def project_id_primet
+  params.require(:project_id)
+end
+def test_mode_primet
+  params.require(:test_mode_id)
 end
       
 end
