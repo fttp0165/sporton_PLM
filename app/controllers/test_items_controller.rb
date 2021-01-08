@@ -34,7 +34,7 @@ def update
   @project= @test_mode.project
   if @test_item.update(item_permit)
     flash[:notice]="更新成功"
-    redirect_to edit_test_item_path(@test_mode,@project)
+    redirect_to edit_test_item_path(@test_item)
   else
     flash[:notice]="更新失敗"
     render :edit

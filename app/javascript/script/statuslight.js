@@ -11,6 +11,7 @@ document.addEventListener("turbolinks:load", ()=>{
               //超過預定時間未完成顯示紅色    
               p[i].classList.add("Overdue"); 
             }else if(today > (Date.parse(p[i].dataset.date)-threeDay)){
+                //接近預定時間前三天未完成顯示黃色
                 p[i].classList.add("warning");
             }else{
                  p[i].classList.add("doit");
