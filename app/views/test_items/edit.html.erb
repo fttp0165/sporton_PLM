@@ -2,7 +2,7 @@
       <div class="col-2">
             <div class="row">
               <div class=" alert alert-primary col-12" role="alert"> 
-                <%=link_to "返回檔案",edit_test_mode_path(@page_id),class:"nav-link"%>
+                <%=link_to "返回檔案",edit_test_mode_path(@test_mode),class:"nav-link"%>
               </div>
             </div>
       </div>
@@ -25,7 +25,7 @@
                         </tr>
                         <tr>
                               <td>
-                                <%=t.label :expected_date_of_delivery,'預計發證日'%>
+                                <%=t.label :expected_date_of_delivery,'預計完成日'%>
                               </td>
                               <td>
                                 <%=t.date_field :expected_date_of_delivery,class:'form-control form_input'%>
@@ -44,7 +44,6 @@
                               </td>
                               </td>
                         </tr>
-                        <%=t.text_field :project_id,value:@project.id,style:"display:none"%>
                   </table>
                   <div class="row">
                         <div class="col-12">

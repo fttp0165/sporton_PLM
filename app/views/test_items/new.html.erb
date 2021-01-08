@@ -31,10 +31,12 @@
                               <%= t.radio_button(:status, "完成") %>
                               <%= t.label(:status_ok, "完成") %>  
                               <%= t.radio_button(:status, "pending") %>
-                              <%= t.label(:status_ok, "pending") %>        
+                              <%= t.label(:status_ok, "pending") %>
+                            
                               </td>                         
                           </tr>
                         </td>
+                      
                         <%=t.text_field :test_mode_id,value:@test_mode.id,class:'form-control form_input',style:"display:none"%>
                 </table>
                 <div class="row">

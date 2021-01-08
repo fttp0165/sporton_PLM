@@ -17,8 +17,9 @@ class TestModesController < ApplicationController
   end
 
   def update
-    @project=Project.find(params[:test_mode][:project_id])
+    
     @test_mode=TestMode.find(params[:id])
+    @project=@test_mode.project
     if @test_mode.update(test_primet)
       flash[:notice]="更新成功"
       redirect_to edit_test_mode_path(@test_mode,@project)
@@ -29,9 +30,7 @@ class TestModesController < ApplicationController
   end
 
   def edit
-
     @comment=Comment.new
-    @project=Project.find(project_id_primet)
     if params.include?(:test_mode_id)
       @test_mode=TestMode.find(test_mode_primet)
     else
@@ -39,7 +38,8 @@ class TestModesController < ApplicationController
     end  
     @comments=@test_mode.comments.order(created_at: :desc)
     @test_item_list=@test_mode.test_items
-    @page_id={:project_id=>@project.id,:test_mode_id=> @test_mode.id}
+    @project=@test_mode.project
+    @page_id={:test_mode_id=> @test_mode.id}
   end
 
   def show
@@ -57,6 +57,9 @@ def project_id_primet
 end
 def test_mode_primet
   params.require(:test_mode_id)
+end
+def project_id_page_id_primet
+  params.require(:page_id).permit(:project_id)
 end
       
 end

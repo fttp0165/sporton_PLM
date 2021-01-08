@@ -19,21 +19,20 @@ class TestItemsController < ApplicationController
  end
 
  def edit
-  @project=Project.find(project_id_primet)
-  @test_mode=Project.find(test_mode_primet)
   @comment=Comment.new
   @test_item=TestItem.find(params[:id])
+  @test_mode=@test_item.test_mode
+  @project= @test_mode.project
   @comments=@test_item.comments.order(created_at: :desc)
-  @page_id={:project_id=>@project.id,:test_mode_id=> @test_mode.id}
 end
 
 
 
 def update
-  
-  @project=Project.find(params[:test_item][:project_id])
-  @test_mode=TestItem.find(params[:id])
-  if @test_mode.update(item_permit)
+  @test_item=TestItem.find(params[:id])
+  @test_mode=@test_item.test_mode
+  @project= @test_mode.project
+  if @test_item.update(item_permit)
     flash[:notice]="更新成功"
     redirect_to edit_test_item_path(@test_mode,@project)
   else
