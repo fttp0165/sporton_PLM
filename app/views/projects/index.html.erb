@@ -46,7 +46,7 @@
                   <div class="row col-12">
                     <%test_mode.test_items.each do |test_item|%>
                         <span class="col-1 d-inline-block" tabindex="0" data-bs-toggle="tooltip"  title=<%="#{test_mode.law_name}_#{test_item.test_name}"%> >
-                          <p class="statusLight" style="pointer-events: none;" data-status=<%=test_item.status%>> </p>
+                          <p class="statusLight" style="pointer-events: none;" data-date=<%=test_item.expected_date_of_delivery%> data-status=<%=test_item.status%>> </p>
                         </span>
                    
                     <%end%>

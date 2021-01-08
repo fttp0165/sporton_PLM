@@ -46,11 +46,6 @@ end
   def item_permit
     params.require(:test_item).permit(:test_name,:expected_date_of_delivery,:status)
   end
-  def project_id_primet
-    params.require(:project_id)
-  end
-  def test_mode_primet
-    params.require(:test_mode_id)
-  end
+
 
 end

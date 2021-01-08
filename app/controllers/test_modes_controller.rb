@@ -55,12 +55,7 @@ end
 def project_id_primet
   params.require(:project_id)
 end
-def test_mode_primet
-  params.require(:test_mode_id)
-end
-def project_id_page_id_primet
-  params.require(:page_id).permit(:project_id)
-end
+
       
 end
 
