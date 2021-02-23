@@ -2,6 +2,7 @@ class TestModesController < ApplicationController
   def  new
     @project=Project.find(params[:format])
     @test_mode=TestMode.new
+    @test_mode.test_items.new
   end
 
   def  create
@@ -49,12 +50,20 @@ class TestModesController < ApplicationController
 
 private
 
-def test_primet
-  params.require(:test_mode).permit(:law_name,:expected_date_of_delivery)
-end
-def project_id_primet
-  params.require(:project_id)
-end
+  def test_primet
+    params.require(:test_mode).permit(:law_name,
+                                      :expected_date_of_delivery,
+                                      test_items_attributes: [
+                                        :id,
+                                        :status,
+                                        :test_name,
+                                        :expected_date_of_delivery,
+                                        :_destroy
+                                      ])
+  end
+  def project_id_primet
+    params.require(:project_id)
+  end
 
       
 end

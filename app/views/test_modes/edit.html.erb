@@ -1,82 +1,49 @@
 <div class="row">
   <div class="col-2" style="height:100vh">
     <div class="row">
-        <div class="alert alert-primary col-12" role="alert">
-          <%=link_to "新增測試" ,new_test_item_path(@test_mode),class:"nav-link "%>
+      <div class="alert alert-primary col-12" role="alert">
+        <%=link_to "新增測試" ,new_test_item_path(@test_mode),class:"nav-link "%>
         </div>
-        <div class=" alert alert-primary col-12" role="alert"> 
-          <%=link_to "返回檔案",edit_project_path(@project),class:"nav-link"%>
-        </div>
-        <%if @test_item_list %>
-          <%@test_item_list.each do |l|%>
-            <div class="alert alert-primary col-12" role="alert">
-              <%=link_to " #{l.test_name}" , edit_test_item_path(l,@page_id) ,class:"nav-link"%>
-            </div>
+        <div class=" alert alert-primary col-12" role="alert">
+          <%=link_to "返回檔案" ,edit_project_path(@project),class:"nav-link"%>
+      </div>
+      <%if @test_item_list %>
+        <%@test_item_list.each do |l|%>
+          <div class="alert alert-primary col-12" role="alert">
+            <%=link_to " #{l.test_name}" , edit_test_item_path(l,@page_id) ,class:"nav-link"%>
+          </div>
           <%end%>
-        <%end%>
+            <%end%>
     </div>
   </div>
 
   <div class="col-8">
-    <h4 id="Info">測試法規</h4>
-    <h3>
-      <%="案號：#{@project.project_number}"%>
-    </h3>
-    <%= form_for @test_mode do |t| %>
-      <table class="table table-striped">
-        <tr>
-          <td>
-            <%=t.label :law_name,'法規:'%>
-          </td>
-          <td>
-            <%= t.select :law_name ,
-                  options_for_select(['FCC','CE','EMC','NCC','C-TICK','IC','JR','WorldWide'], 
-                  selected: t.object.law_name),
-                  class:"dropdown-toggle" %>
-          </td>
-          <td>
-        </tr>
-        <tr>
-          <td>
-            <%=t.label :expected_date_of_delivery,'預計發證日'%>
-          </td>
-          <td>
-            <%=t.date_field :expected_date_of_delivery,class:'form-control form_input'%>
-          </td>
-        </tr>
-        </td>
-        <%=t.text_field :page_id,value:@page_id,style:"display:none"%>
-        <%=t.text_field :test_mode_id,value:@test_mode.id,style:"display:none"%>
-      </table>
-         <div class="row">
-           <div class="col-12">
-             <%if @test_mode.try(:errors)%>
-               <ul style="list-style:none; color:red;">
-                   <% @test_mode.errors.full_messages.each do |e|%>
-                   <li><%=e%></li>
-                   <%end%>
-               </ul>
-             <%end%>
-           </div>
-           <div class="col-8"></div>
-           <%=t.submit :修改, class:"btn btn-success col-2" %>
-         </div>
-     <%end%>
-      <hr>
-      <!-- 顯示留言 -->
-        <%=form_for @comment ,url:test_mode_comments_path(@test_mode),remote: true do |c|%>
-          <%=c.text_area :content,class:"form-control" %>
-          <%=c.submit :留言,class:"btn btn-success"%>
-        <%end%>
-                <hr>
-                <%if @comments%>
-                  <ul class="comments">
-                    <%@comments.each do |c|%>
-                      <%= render "./comments/comment" ,comment:c%>
-                    <%end%>
-                  </ul>
+    <div class="row">
+      <div class="col-12 ">
+        <h4 id="Info">測試法規</h4>
+        <h3>
+          <%="案號：#{@project.project_number}"%>
+        </h3>
+        <%=render "form" ,test_mode: @test_mode%>
+      </div>
+    </div>
+    <div class="col-12 "></div>
+    <!-- 顯示留言 -->
+        <div class="col-12 p-3">
+          <%=form_for @comment ,url:test_mode_comments_path(@test_mode),remote: true do |c|%>
+            <%=c.text_area :content,class:"form-control" %>
+              <%=c.submit :留言,class:"btn btn-success"%>
                 <%end%>
-
+                  <hr>
+                  <%if @comments%>
+                    <ul class="comments">
+                      <%@comments.each do |c|%>
+                        <%= render "./comments/comment" ,comment:c%>
+                          <%end%>
+                    </ul>
+                    <%end%>
+      
+    </div>
   </div>
 
 
