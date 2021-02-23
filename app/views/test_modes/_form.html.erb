@@ -5,25 +5,15 @@
       <td>
         <%=t.label :law_name,'法規:'%>
       </td>
+
       <td>
-        <%= t.select(:law_name) do %>
-          <%country=['FCC','CE','EMC','NCC','C-TICK','IC','JR','WorldWide']%>
-            <% country.each do |c| %>
-              <%= content_tag(:option, c, value: c) %>
-                <% end %>
-                  <% end %>
-                    <!-- <t.select name="law_name" id="law_name" class='form-control form_input'>
-                    <option value="FCC">FCC</option>
-                    <option value="CE">CE</option>
-                    <option value="EMC">EMC</option>
-                    <option value="NCC">NCC</option>
-                    <option value="C-TICK">C-TICK</option>
-                    <option value="IC">IC</option>
-                    <option value="JR">JR</option>
-                    <option value="WorldWide">WorldWide</option>
-                </select> -->
+        <!-- select_tag -->
+        <%= t.select :law_name ,
+          options_for_select(['FCC','CE','EMC','NCC','C-TICK','IC','JR','WorldWide'],
+          selected: t.object.law_name), class:"dropdown-toggle" %>
       </td>
-      <td>
+      
+  
     </tr>
     <tr>
       <td>
@@ -39,12 +29,26 @@
 
   </table>
   <h3>測試項目</h3>
-  <%= t.fields_for :test_items do |item| %>
-    <%=render "test_item" ,item: item%>
-  <%end%>
+  <div data-controller="test-item-form">
+    <template data-test-item-form-target="template">
+      <%= t.fields_for :test_items,TestItem.new,child_index:"NEW_RECORD" do |item| %>
+      <%=render "test_item" ,item: item%>
+      <%end%>
+    </template> 
+
+
+    <%= t.fields_for :test_items do |item| %>
+      <%=render "test_item" ,item: item%>
+    <%end%>
+
+    <hr>
+    <div data-test-item-form-target="link">
+      <%=link_to "新增測試項目","#",class:'btn btn-success',"data-action":'click->test-item-form#add_item'%>
+    </div>
+  
+  </div>
   <div class="row">
     <div class="col-12">
-
       <%if @test_mode.try(:errors)%>
         <ul style="list-style:none; color:red;">
           <% @test_mode.errors.full_messages.each do |e|%>
@@ -57,5 +61,5 @@
 
     </div>
     <div class="col-9"></div>
-    <%=t.submit :建立, class:"btn btn-success col-2" %>
+    <%=t.submit  "更新",class:"btn btn-success col-2" %>
     <%end%>

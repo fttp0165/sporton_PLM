@@ -1,36 +1,54 @@
-<table  class="table table-striped">
-  <tr>
-     <td><%=item.label :test_name,'法規:'%></td>
-
-  <td>
-      <%= item.select(:test_name) do %>
-        <%country=['966','TH','Fully','FD','RSE','TPC','DFS','Adaptivity','EMI','EMS','EP','PLC','Special']%>
-          <% country.each do |c| %>
-            <%= content_tag(:option, c, value: c) %>
-          <% end %>
-      <% end %>
-  </td>
- </tr>
-  <td>
-    <tr>
-      <td><%=item.label :expected_date_of_delivery,'預計完成日'%></td>
-      <td><%=item.date_field :expected_date_of_delivery,class:'form-control form_input'%></td>
+<div class="nested-form" data-new-record="<%= item.object.new_record? %>">
+  <table class="table table-striped">
+    <tr class="table-success">
+      <td>
+        <%=item.label :test_name,'測項:' %>
+      </td>
+      <td>
+        <!-- select_tag -->
+        <%= item.select :test_name ,
+          options_for_select(['966','TH','Fully','FD','RSE','TPC','DFS','Adaptivity','EMI','EMS','EP','PLC','Special'],
+          selected: item.object.test_name), class:"dropdown-toggle" %>
+      </td>
     </tr>
-  </td>
-  <td>   
-    <tr>
-        <td><%=item.label :status,'狀態:'%></td>
+    <td>
+      <tr>
         <td>
-        <%= item.radio_button(:status, "未完成",:checked => true) %>
-        <%= item.label(:status_no, "未完成") %>
-        <%= item.radio_button(:status, "完成") %>
-        <%= item.label(:status_ok, "完成") %>  
-        <%= item.radio_button(:status, "pending") %>
-        <%= item.label(:status_ok, "pending") %>
-      
-        </td>                         
-    </tr>
-  </td>
+          <%=item.label :expected_date_of_delivery,'預計完成日'%>
+        </td>
+        <td>
+          <%=item.date_field :expected_date_of_delivery,class:'form-control form_input'%>
+        </td>
+      </tr>
+    </td>
+    <td>
+      <tr>
+        <td>
+          <%=item.label :status,'狀態:'%>
+        </td>
+        <td>
+          <%= item.radio_button(:status, "未完成" ,:checked=> true) %>
+            <%= item.label(:status_no, "未完成" ) %>
+              <%= item.radio_button(:status, "完成" ) %>
+                <%= item.label(:status_ok, "完成" ) %>
+                  <%= item.radio_button(:status, "pending" ) %>
+                    <%= item.label(:status_ok, "pending" ) %>
 
-  <%=item.text_field :test_mode_id,value:@test_mode.id,class:'form-control form_input',style:"display:none"%>
-</table>
+        </td>
+
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end" data-test-item-form-target="">
+            <%=link_to "刪除" ,"#",class:'btn btn-danger',"data-action":'click->test-item-form#remove_item'%>
+          </div>
+        </td>
+      </tr>
+      <%=item.hidden_field :_destroy%>
+    </td>
+
+
+    <%=item.text_field :test_mode_id,value:@test_mode.id,class:'form-control form_input',style:"display:none"%>
+  </table>
+</div>
